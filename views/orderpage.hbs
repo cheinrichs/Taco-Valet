@@ -39,6 +39,9 @@
   <div class="col-md-3">
     <div class="menu">
       <h2 class="text-center">YOUR ORDER:</h2>
+      <ul id="right-menu">
+
+      </ul>
     </div>
   </div>
 </div>
@@ -156,17 +159,17 @@ if (!('webkitSpeechRecognition' in window)) {
   recognition.onstart = function() {
     recognizing = true;
     showInfo('info_speak_now');
-    start_img.src = '/images/mic-animate.gif';
+    //start_img.src = '/images/mic-animate.gif';
   };
 
   recognition.onerror = function(event) {
     if (event.error == 'no-speech') {
-      start_img.src = '/images/mic.gif';
+      //start_img.src = '/images/mic.gif';
       showInfo('info_no_speech');
       ignore_onend = true;
     }
     if (event.error == 'audio-capture') {
-      start_img.src = '/images/mic.gif';
+      //start_img.src = '/images/mic.gif';
       showInfo('info_no_microphone');
       ignore_onend = true;
     }
@@ -185,7 +188,7 @@ if (!('webkitSpeechRecognition' in window)) {
     if (ignore_onend) {
       return;
     }
-    start_img.src = '/images/mic.gif';
+    //start_img.src = '/images/mic.gif';
     if (!final_transcript) {
       showInfo('info_start');
       return;
@@ -222,7 +225,7 @@ if (!('webkitSpeechRecognition' in window)) {
         console.log(arr);
         for (var i = 0; i < arr.length; i++) {
           //arr[i]
-          $('.menu').append(arr[i]);
+          $('#right-menu').append("<li>" + arr[i] + "</li>");
         }
       }
       showButtons('inline-block');
@@ -280,8 +283,8 @@ function copyButton() {
     recognizing = false;
     recognition.stop();
   }
-  copy_button.style.display = 'none';
-  copy_info.style.display = 'inline-block';
+  //copy_button.style.display = 'none';
+  //copy_info.style.display = 'inline-block';
   showInfo('');
 }
 
@@ -309,7 +312,7 @@ function startButton(event) {
   ignore_onend = false;
   final_span.innerHTML = '';
   interim_span.innerHTML = '';
-  start_img.src = '/images/mic-slash.gif';
+  //start_img.src = '/images/mic-slash.gif';
   showInfo('info_allow');
   showButtons('none');
   start_timestamp = event.timeStamp;
@@ -334,10 +337,10 @@ function showButtons(style) {
     return;
   }
   current_style = style;
-  copy_button.style.display = style;
-  email_button.style.display = style;
-  copy_info.style.display = 'none';
-  email_info.style.display = 'none';
+  //copy_button.style.display = style;
+  //email_button.style.display = style;
+  //copy_info.style.display = 'none';
+  //email_info.style.display = 'none';
 }
 
 </script>
