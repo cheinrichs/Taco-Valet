@@ -9,9 +9,18 @@ router.get('/', function(req, res, next) {
   });
 });
 
+router.get('/order', function(req, res, next) {
+  knex('users').then(function(names) {
+    console.log(names);
+    res.render('order', {
+      users: names[names.length - 1]
+    });
+  });
+});
+
 router.post('/login', function(req, res, next) {
   knex('users').insert(req.body).then(function() {
-    res.redirect('/');
+    res.redirect('/order');
   });
 });
 
