@@ -9,10 +9,10 @@ router.get('/', function(req, res, next) {
   });
 });
 
-router.get('/order', function(req, res, next) {
+router.get('/orderpage', function(req, res, next) {
   knex('users').then(function(names) {
     console.log(names);
-    res.render('order', {
+    res.render('orderpage', {
       users: names[names.length - 1]
     });
   });
@@ -20,12 +20,8 @@ router.get('/order', function(req, res, next) {
 
 router.post('/login', function(req, res, next) {
   knex('users').insert(req.body).then(function() {
-    res.redirect('/order');
+    res.redirect('/orderpage');
   });
-});
-
-router.get('/orderpage', function(req, res, next) {
-  res.render('orderpage', { title: 'Express' });
 });
 
 module.exports = router;
