@@ -38,7 +38,6 @@ a {
 }
 .voiceinput {
   color: black;
-  font-family: 'Bangers', cursive;
   background-color: white;
   border-radius: 25px;
   box-shadow: 5px 5px 5px #888888;
@@ -46,12 +45,18 @@ a {
   padding: 15px;
   opacity: .9;
 }
+.voiceinput h2 {
+  font-family: 'Bangers', cursive;
+}
 button {
   background-color: gray;
   border-radius: 20px;
   box-shadow: 2px 2x 2px #888888;
   margin-bottom: 15px;
   font-size: 2em;
+}
+.talkbutt {
+  height: 30px;
 }
 .form-signin-heading {
   color: #ffbb33;
@@ -62,6 +67,7 @@ button {
   font-family: 'Bangers', cursive;
   font-size: 22px;
   top: 20px;
+  border-radius: 25px;
 }
 .insertOrder {
   height: 235px;
@@ -72,5 +78,14 @@ button {
   margin-left: auto;
   margin-right: auto;
   border-radius: 25px;
-  margin-top: 55px;
+  margin-top: 25px;
+}
+.info {
+  font-family: 'Muli', sans-serif;
+}
+#right-menu {
+  font-size: 24px;
+  color: black;
+  font-family: 'Muli', sans-serif;
+  text-transform: capitalize;
 }
