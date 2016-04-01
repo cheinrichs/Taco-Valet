@@ -26,71 +26,55 @@
   </div>
     <!-- <img src="https://assets3.thrillist.com/v1/image/1357735/size/tl-horizontal_main/everything-macaulay-culkin-eats-in-the-home-alone-movies-ranked" alt="some_text" width="300px;"> -->
   <div class="col-md-3">
-    <div class="voiceinput">
+    <div class="voiceinput text-center">
       <h2 class="text-center">ORDER BY VOICE</h2>
+
       <br><br><br><br>
       <button type="button" class="btn btn-primary center-block talkbutt">CLICK TO TALK</button>
       <br><br>
+
+      <div id="info">
+        <p id="info_start">Click on the microphone icon and begin speaking.</p>
+        <p id="info_speak_now">Speak now.</p>
+        <p id="info_no_speech">No speech was detected. You may need to adjust your
+          <a href="//support.google.com/chrome/bin/answer.py?hl=en&amp;answer=1407892">
+            microphone settings</a>.</p>
+        <p id="info_no_microphone" style="display:none">
+          No microphone was found. Ensure that a microphone is installed and that
+          <a href="//support.google.com/chrome/bin/answer.py?hl=en&amp;answer=1407892">
+          microphone settings</a> are configured correctly.</p>
+        <p id="info_allow">Click the "Allow" button above to enable your microphone.</p>
+        <p id="info_denied">Permission to use microphone was denied.</p>
+        <p id="info_blocked">Permission to use microphone is blocked. To change,
+          go to chrome://settings/contentExceptions#media-stream</p>
+        <p id="info_upgrade">Web Speech API is not supported by this browser.
+           Upgrade to <a href="//www.google.com/chrome">Chrome</a>
+           version 25 or later.</p>
+      </div>
+      <button id="start_button" onclick="startButton(event)" type="button" class="btn btn-primary">Click to Say Your Order</button>
+
       <img class="tacocat" src="http://lovelace-media.imgix.net/uploads/280/8ba3a620-dae7-0132-4623-0ebc4eccb42f.jpg?w=670&fit=max&auto=format&q=70" alt="taco cat"/>
     </div>
   </div>
   <div class="col-md-6">
     <div class="menu">
       <h2 class="text-center">YOUR ORDER:</h2>
+      <ul id="right-menu">
+
+      </ul>
       <div class="insertOrder">
 
       </div>
-
     </div>
   </div>
 </div>
 
-<h1 class="center" id="headline">
-  Taco Valet
-<div id="info">
-  <p id="info_start">Click on the microphone icon and begin speaking.</p>
-  <p id="info_speak_now">Speak now.</p>
-  <p id="info_no_speech">No speech was detected. You may need to adjust your
-    <a href="//support.google.com/chrome/bin/answer.py?hl=en&amp;answer=1407892">
-      microphone settings</a>.</p>
-  <p id="info_no_microphone" style="display:none">
-    No microphone was found. Ensure that a microphone is installed and that
-    <a href="//support.google.com/chrome/bin/answer.py?hl=en&amp;answer=1407892">
-    microphone settings</a> are configured correctly.</p>
-  <p id="info_allow">Click the "Allow" button above to enable your microphone.</p>
-  <p id="info_denied">Permission to use microphone was denied.</p>
-  <p id="info_blocked">Permission to use microphone is blocked. To change,
-    go to chrome://settings/contentExceptions#media-stream</p>
-  <p id="info_upgrade">Web Speech API is not supported by this browser.
-     Upgrade to <a href="//www.google.com/chrome">Chrome</a>
-     version 25 or later.</p>
-</div>
-<div class="right">
-  <button id="start_button" onclick="startButton(event)">
-    <img id="start_img" src="/images/mic.gif" alt="Start"></button>
-</div>
 <div id="results">
   <span id="final_span" class="final"></span>
   <span id="interim_span" class="interim"></span>
   <p>
 </div>
-<div class="center">
-  <div class="sidebyside" style="text-align:right">
-    <button id="copy_button" class="button" onclick="copyButton()">
-      Copy and Paste</button>
-    <div id="copy_info" class="info">
-      Press Control-C to copy text.<br>(Command-C on Mac.)
-    </div>
-  </div>
-  <div class="sidebyside">
-    <button id="email_button" class="button" onclick="emailButton()">
-      Create Email</button>
-    <div id="email_info" class="info">
-      Text sent to default email application.<br>
-      (See chrome://settings/handlers to change.)
-    </div>
-  </div>
-  <p>
+<div class="text-center">
   <div id="div_language">
     <select id="select_language" onchange="updateCountry()"></select>
     &nbsp;&nbsp;
@@ -198,17 +182,17 @@ if (!('webkitSpeechRecognition' in window)) {
   recognition.onstart = function() {
     recognizing = true;
     showInfo('info_speak_now');
-    start_img.src = '/images/mic-animate.gif';
+    //start_img.src = '/images/mic-animate.gif';
   };
 
   recognition.onerror = function(event) {
     if (event.error == 'no-speech') {
-      start_img.src = '/images/mic.gif';
+      //start_img.src = '/images/mic.gif';
       showInfo('info_no_speech');
       ignore_onend = true;
     }
     if (event.error == 'audio-capture') {
-      start_img.src = '/images/mic.gif';
+      //start_img.src = '/images/mic.gif';
       showInfo('info_no_microphone');
       ignore_onend = true;
     }
@@ -227,7 +211,7 @@ if (!('webkitSpeechRecognition' in window)) {
     if (ignore_onend) {
       return;
     }
-    start_img.src = '/images/mic.gif';
+    //start_img.src = '/images/mic.gif';
     if (!final_transcript) {
       showInfo('info_start');
       return;
@@ -255,13 +239,40 @@ if (!('webkitSpeechRecognition' in window)) {
       }
     }
     final_transcript = capitalize(final_transcript);
-    //final_span.innerHTML = linebreak(final_transcript);
-    //interim_span.innerHTML = linebreak(interim_transcript);
+    // final_span.innerHTML = linebreak(final_transcript);
+    // interim_span.innerHTML = linebreak(interim_transcript);
     if (final_transcript || interim_transcript) {
-      console.log("master " + final_transcript);
+      console.log(final_transcript);
+      var arr = parseVoiceString(final_transcript, orderableItems);
+      if(arr.length >= 1){
+        console.log(arr);
+        for (var i = 0; i < arr.length; i++) {
+          //arr[i]
+          $('#right-menu').append("<li>" + arr[i] + "</li>");
+        }
+      }
       showButtons('inline-block');
     }
   };
+}
+
+var specificationTaco = ['beef', 'chicken']
+var orderableItems = ['burrito', 'taco', 'quesadilla', 'nachos']
+var completion = ['complete', 'another']
+
+//Please order one item at a time
+function parseVoiceString(passed_in_string, context) {
+  var orderItems = []
+  var orderArray = passed_in_string.toLowerCase().split(' ')
+  orderArray.forEach(function(elem) {
+    //come back and make this iterable
+    context.forEach(function(e) {
+      if (elem === e) {
+        orderItems.push(elem)
+      }
+    })
+  })
+  return orderItems
 }
 
 function upgrade() {
@@ -295,8 +306,8 @@ function copyButton() {
     recognizing = false;
     recognition.stop();
   }
-  copy_button.style.display = 'none';
-  copy_info.style.display = 'inline-block';
+  //copy_button.style.display = 'none';
+  //copy_info.style.display = 'inline-block';
   showInfo('');
 }
 
@@ -324,7 +335,7 @@ function startButton(event) {
   ignore_onend = false;
   final_span.innerHTML = '';
   interim_span.innerHTML = '';
-  start_img.src = '/images/mic-slash.gif';
+  //start_img.src = '/images/mic-slash.gif';
   showInfo('info_allow');
   showButtons('none');
   start_timestamp = event.timeStamp;
@@ -349,9 +360,10 @@ function showButtons(style) {
     return;
   }
   current_style = style;
-  copy_button.style.display = style;
-  email_button.style.display = style;
-  copy_info.style.display = 'none';
-  email_info.style.display = 'none';
+  //copy_button.style.display = style;
+  //email_button.style.display = style;
+  //copy_info.style.display = 'none';
+  //email_info.style.display = 'none';
 }
+
 </script>
