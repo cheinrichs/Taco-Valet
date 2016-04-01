@@ -53,3 +53,13 @@ button {
   margin-bottom: 15px;
   font-size: 2em;
 }
+
+.form-signin-heading {
+  color: #ffbb33;
+  font-family: 'Bangers', cursive;
+}
+
+.menulist {
+  color: black;
+  font-family: 'Bangers', cursive;
+}
