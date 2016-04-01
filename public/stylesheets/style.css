@@ -19,3 +19,19 @@ a {
   font-family: 'Bangers', cursive;
   font-size: 1.5em;
 }
+
+.menu {
+  color: #ff3399;
+  font-family: 'Bangers', cursive;
+  background-color: #ffbb33;
+  border-radius: 25px;
+  box-shadow: 5px 5px 5px #888888;
+
+  height: 500px;
+  padding: 15px;
+  opacity: .9;
+}
+
+#menu h2 {
+  text-align: center;
+}
