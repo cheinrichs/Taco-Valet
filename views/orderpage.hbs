@@ -35,14 +35,14 @@
         <p id="info_start">1. Click on the button
           <br> and begin speaking.
           <br>
-          <br>2. Click again when you are finished.
+          <br>2. Say COMPLETE when done ordering.
           <br>
           <br>Our state-of-the-art voice recognition
           <br>software will display your order to the left.
           <br>
           <br>
         </p>
-        <p id="info_speak_now">Speak now.</p>
+        <p id="info_speak_now" style="height: 20px;">Say COMPLETE to finish order.</p>
         <p id="info_no_speech">No speech was detected. You may need to adjust your
           <a href="//support.google.com/chrome/bin/answer.py?hl=en&amp;answer=1407892">
             microphone settings</a>.</p>
@@ -264,7 +264,7 @@
   }
 
   // var specificationTaco = ['beef', 'chicken']
-  var orderableItems = ['burrito', 'taco', 'quesadilla', 'nachos', 'grilled', 'cheesy', 'quesalupa', 'quesarito', 'crunchwrap']
+  var orderableItems = ['burrito', 'taco', 'quesadilla', 'nachos', 'grilled', 'cheesy', 'quesalupa', 'quesarito', 'crunchwrap', 'complete']
     // var completion = ['complete', 'another']
 
   //Please order one item at a time
@@ -281,6 +281,8 @@
             orderItems.push('cheesy gordita crunch');
           } else if (elem === 'crunch' || elem === 'crunchwrap') {
             orderItems.push('crunchwrap supreme');
+          } else if (elem === 'complete') {
+            $('.popupbox').css('display', 'block');
           } else {
             orderItems.push(elem);
           }
@@ -289,7 +291,30 @@
     });
     return orderItems
   }
+  var counter = 0;
+  $('#order-button').on('click', function() {
 
+    counter++;
+    if (counter === 1) {
+      $('.some-text').text('please speak louder')
+    }
+    if (counter === 2) {
+      $('.some-text').text('...Speech not recognized. Please speak louder')
+    }
+    if (counter === 3) {
+      $('.some-text').text('c\'mon {{users.name}}, LOUDER')
+    }
+    if (counter === 4) {
+      $('.some-text').text('To complete your order please say \"I am a silly sammy who wants tacos in my timmy tummy\"')
+    }
+    if (counter === 5) {
+      $('.some-text').text('Thanks :) . I enjoyed that. I got it the first time.')
+    }
+    if (counter === 6) {
+      $('.popupbox').hide();
+    }
+
+  })
   function upgrade() {
     start_button.style.visibility = 'hidden';
     showInfo('info_upgrade');
@@ -308,39 +333,6 @@
     return s.replace(first_char, function(m) {
       return m.toUpperCase();
     });
-  }
-
-  function createEmail() {
-    var n = final_transcript.indexOf('\n');
-    if (n < 0 || n >= 80) {
-      n = 40 + final_transcript.substring(40).indexOf(' ');
-    }
-    var subject = encodeURI(final_transcript.substring(0, n));
-    var body = encodeURI(final_transcript.substring(n + 1));
-    window.location.href = 'mailto:?subject=' + subject + '&body=' + body;
-  }
-
-  function copyButton() {
-    if (recognizing) {
-      recognizing = false;
-      recognition.stop();
-    }
-    //copy_button.style.display = 'none';
-    //copy_info.style.display = 'inline-block';
-    showInfo('');
-  }
-
-  function emailButton() {
-    if (recognizing) {
-      create_email = true;
-      recognizing = false;
-      recognition.stop();
-    } else {
-      createEmail();
-    }
-    email_button.style.display = 'none';
-    email_info.style.display = 'inline-block';
-    showInfo('');
   }
 
   function startButton(event) {

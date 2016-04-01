@@ -89,3 +89,24 @@ button {
   font-family: 'Muli', sans-serif;
   text-transform: capitalize;
 }
+.popupbox {
+  background-color: #ffbb33;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 100;
+  display: none;
+}
+
+.some-text {
+  font-size: 100px;
+  color: white;
+  margin: 40vh 0 20px 0;
+  font-family: 'Bangers', cursive;
+}
+
+#start_button {
+  padding-top: 10px;
+}
