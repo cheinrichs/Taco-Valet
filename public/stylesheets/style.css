@@ -63,6 +63,11 @@ button {
   font-size: 2em;
 }
 
+.talkbutt {
+
+  height: 30px;
+}
+
 .form-signin-heading {
   color: #ffbb33;
   font-family: 'Bangers', cursive;
@@ -73,6 +78,7 @@ button {
   font-family: 'Bangers', cursive;
   font-size: 22px;
   top: 20px;
+  border-radius: 25px;
 }
 
 .insertOrder{
