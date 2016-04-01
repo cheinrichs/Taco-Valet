@@ -1,20 +1,31 @@
 <div class="page-header">
-  <h1>Welcome to Taco Valet &nbsp;&nbsp;&nbsp;
+  <h1> &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;
+    Taco Valet &nbsp;&nbsp;&nbsp;
     <small>Tacos straight to your Limo</small></h1>
 </div>
 
-<h1>Hello {{users.name}}, Welcome to Taco-Valet</h1>
+<h1 class="welcomehead">Hello {{users.name}}, Welcome to Taco-Valet</h1>
 
 <div class="row">
   <div class="col-md-3">
     <div class="menu">
       <h2 class="text-center">MENU</h2>
+      <ul class="list-group menulist">
+          <li class="list-group-item">Taco</li>
+          <li class="list-group-item">Burrito</li>
+          <li class="list-group-item">Grilled Stuft Nacho</li>
+          <li class="list-group-item">Cheesy Gordita Crunch</li>
+          <li class="list-group-item">Quesalupa</li>
+          <li class="list-group-item">Quesarito</li>
+          <li class="list-group-item">Crunchwrap Supreme</li>
+      </ul>
+
     </div>
   </div>
     <!-- <img src="https://assets3.thrillist.com/v1/image/1357735/size/tl-horizontal_main/everything-macaulay-culkin-eats-in-the-home-alone-movies-ranked" alt="some_text" width="300px;"> -->
-  <div class="col-md-6">
-    <div class="voiceinput">
-      <h2 class="text-center">YOUR ORDER:</h2>
+  <div class="col-md-3">
+    <div class="voiceinput text-center">
+      <h2 class="text-center">ORDER BY VOICE</h2>
       <div id="info">
         <p id="info_start">Click on the microphone icon and begin speaking.</p>
         <p id="info_speak_now">Speak now.</p>
@@ -33,15 +44,19 @@
            Upgrade to <a href="//www.google.com/chrome">Chrome</a>
            version 25 or later.</p>
       </div>
-      <button id="start_button" onclick="startButton(event)" type="button" class="btn btn-primary center-block">Click to Say Your Order</button>
+      <button id="start_button" onclick="startButton(event)" type="button" class="btn btn-primary">Click to Say Your Order</button>
+      <img class="tacocat" src="http://lovelace-media.imgix.net/uploads/280/8ba3a620-dae7-0132-4623-0ebc4eccb42f.jpg?w=670&fit=max&auto=format&q=70" alt="taco cat"/>
     </div>
   </div>
-  <div class="col-md-3">
+  <div class="col-md-6">
     <div class="menu">
       <h2 class="text-center">YOUR ORDER:</h2>
       <ul id="right-menu">
 
       </ul>
+      <div class="insertOrder">
+
+      </div>
     </div>
   </div>
 </div>
