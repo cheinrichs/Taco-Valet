@@ -31,10 +31,13 @@ console.log(parseVoiceString(order, orderableItems));
 console.log(parseVoiceString(specification, specificationTaco));
 console.log(parseVoiceString(complete, completion));
 
-while (ordering) {
-  parseVoiceString(order, orderableItems)
+//append to div: what would you like to order? <- to be replaced with watson input
+//on click -->
+//run google speach
+//return initial_string
 
-  if (parseVoiceString(complete, completion) === ) {
+function story(initial_string) {
 
-  }
+  parseVoiceString(initial_string, orderableItems)
+
 }
