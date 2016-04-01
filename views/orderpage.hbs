@@ -248,22 +248,30 @@ if (!('webkitSpeechRecognition' in window)) {
   };
 }
 
-var specificationTaco = ['beef', 'chicken']
-var orderableItems = ['burrito', 'taco', 'quesadilla', 'nachos']
-var completion = ['complete', 'another']
+// var specificationTaco = ['beef', 'chicken']
+var orderableItems = ['burrito', 'taco', 'quesadilla', 'nachos', 'grilled', 'cheesy', 'quesalupa', 'quesarito', 'crunchwrap']
+// var completion = ['complete', 'another']
 
 //Please order one item at a time
 function parseVoiceString(passed_in_string, context) {
   var orderItems = []
-  var orderArray = passed_in_string.toLowerCase().split(' ')
+  var orderArray = passed_in_string.toLowerCase().split(' ');
   orderArray.forEach(function(elem) {
     //come back and make this iterable
     context.forEach(function(e) {
       if (elem === e) {
-        orderItems.push(elem)
+        if(elem === 'grilled'){
+          orderItems.push('grilled stuffed nacho');
+        } else if(elem === 'cheesy'){
+          orderItems.push('cheesy gordita crunch');
+        } else if(elem === 'crunch' || elem === 'crunchwrap'){
+          orderItems.push('crunchwrap supreme');
+        } else {
+          orderItems.push(elem);
+        }
       }
-    })
-  })
+    });
+  });
   return orderItems
 }
 
@@ -352,10 +360,6 @@ function showButtons(style) {
     return;
   }
   current_style = style;
-  //copy_button.style.display = style;
-  //email_button.style.display = style;
-  //copy_info.style.display = 'none';
-  //email_info.style.display = 'none';
 }
 
 </script>
