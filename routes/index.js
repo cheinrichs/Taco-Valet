@@ -15,4 +15,8 @@ router.post('/login', function(req, res, next) {
   });
 });
 
+router.get('/orderpage', function(req, res, next) {
+  res.render('orderpage', { title: 'Express' });
+});
+
 module.exports = router;
