@@ -26,12 +26,30 @@ a {
   background-color: #ffbb33;
   border-radius: 25px;
   box-shadow: 5px 5px 5px #888888;
-
-  height: 500px;
+  height: 450px;
   padding: 15px;
   opacity: .9;
 }
 
 #menu h2 {
   text-align: center;
+}
+
+.voiceinput{
+  color: black;
+  font-family: 'Bangers', cursive;
+  background-color: white;
+  border-radius: 25px;
+  box-shadow: 5px 5px 5px #888888;
+  height: 450px;
+  padding: 15px;
+  opacity: .9;
+}
+
+button {
+  background-color: gray;
+  border-radius: 20px;
+  box-shadow: 2px 2x 2px #888888;
+  margin-bottom: 15px;
+  font-size: 2em;
 }
